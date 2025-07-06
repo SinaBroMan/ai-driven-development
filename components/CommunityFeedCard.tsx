@@ -9,24 +9,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import CommentModal from './CommentModal';
-
-interface CommunityFeedCardProps {
-  postId: string;
-  imageURL: string;
-  userName: string;
-  userProfile: string;
-  likes: number;
-  comments: number;
-  scraps: number;
-  createdAt: string;
-  prompt: string;
-  isLiked?: boolean;
-  isScrapped?: boolean;
-  onLikeToggle?: (postId: string) => void;
-  onCommentClick?: (post: any) => void;
-  onScrapeToggle?: (postId: string) => void;
-  priority?: boolean; // LCP 최적화를 위한 priority 설정
-}
+import { CommunityFeedCardProps } from '@/types';
 
 const CommunityFeedCard: React.FC<CommunityFeedCardProps> = ({
   postId,

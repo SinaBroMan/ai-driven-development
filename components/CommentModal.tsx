@@ -16,38 +16,7 @@ import { Separator } from '@/components/ui/separator';
 import { Heart, Send, MessageCircle, Bookmark } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getRelativeTime } from '@/lib/mockData';
-
-interface Comment {
-  id: string;
-  postId: string;
-  content: string;
-  userName: string;
-  userProfile: string;
-  createdAt: string;
-  parentId?: string;
-}
-
-interface Post {
-  postId: string;
-  imageURL: string;
-  userName: string;
-  userProfile: string;
-  likes: number;
-  comments: number;
-  scraps: number;
-  createdAt: string;
-  prompt: string;
-  isLiked: boolean;
-  isScrapped: boolean;
-}
-
-interface CommentModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  post: Post;
-  onLikeToggle?: (postId: string) => void;
-  onScrapeToggle?: (postId: string) => void;
-}
+import { Comment, Post, CommentModalProps } from '@/types';
 
 const CommentModal: React.FC<CommentModalProps> = ({
   isOpen,
