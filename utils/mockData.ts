@@ -170,3 +170,151 @@ export const mockComments: IComment[] = [
 //         updatedAt: '2024-03-17T00:00:00Z'
 //     }
 // ]
+
+// 이미지 생성 목업 데이터
+export const mockGeneratedImages = [
+    'https://picsum.photos/512/512?random=1',
+    'https://picsum.photos/512/512?random=2',
+    'https://picsum.photos/512/512?random=3',
+    'https://picsum.photos/512/512?random=4',
+    'https://picsum.photos/512/512?random=5',
+];
+
+// 이미지 생성 API 목업 함수
+export const mockGenerateImage = async (
+    prompt: string,
+    styleOptions: { artStyle: string; colorTone: string }
+): Promise<{ success: boolean; imageUrl?: string; error?: string }> => {
+    // 실제 API 호출을 시뮬레이션하기 위한 지연
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    
+    // 90% 확률로 성공
+    if (Math.random() > 0.1) {
+        const randomIndex = Math.floor(Math.random() * mockGeneratedImages.length);
+        return {
+            success: true,
+            imageUrl: mockGeneratedImages[randomIndex]
+        };
+    } else {
+        return {
+            success: false,
+            error: '이미지 생성에 실패했습니다. 다시 시도해 주세요.'
+        };
+    }
+};
+
+// 프롬프트 제안 목업 데이터
+export const mockPromptSuggestions = [
+    '아름다운 석양이 지는 바닷가',
+    '신비로운 숲 속의 요정',
+    '미래도시의 스카이라인',
+    '우주 공간에서 바라본 지구',
+    '따뜻한 봄날의 꽃밭',
+    '고양이가 있는 아늑한 카페',
+    '판타지 세계의 마법사',
+    '빈티지 자동차가 있는 거리',
+    '눈이 내리는 겨울 마을',
+    '컬러풀한 추상화 작품'
+];
+
+// 인기 프롬프트 목업 데이터
+export const mockPopularPrompts = [
+    {
+        prompt: '아름다운 석양이 지는 바닷가',
+        count: 156,
+        style: '디지털아트',
+        colorTone: '밝은'
+    },
+    {
+        prompt: '신비로운 숲 속의 요정',
+        count: 134,
+        style: '수채화',
+        colorTone: '파스텔'
+    },
+    {
+        prompt: '미래도시의 스카이라인',
+        count: 128,
+        style: '디지털아트',
+        colorTone: '어두운'
+    },
+    {
+        prompt: '우주 공간에서 바라본 지구',
+        count: 112,
+        style: '디지털아트',
+        colorTone: '컬러풀'
+    },
+    {
+        prompt: '따뜻한 봄날의 꽃밭',
+        count: 98,
+        style: '수채화',
+        colorTone: '밝은'
+    }
+];
+
+// 생성 히스토리 목업 데이터
+export const mockGenerationHistory = [
+    {
+        id: '1',
+        prompt: '아름다운 석양이 지는 바닷가',
+        imageUrl: 'https://picsum.photos/512/512?random=1',
+        style: '디지털아트',
+        colorTone: '밝은',
+        createdAt: '2024-01-15T10:30:00Z'
+    },
+    {
+        id: '2',
+        prompt: '신비로운 숲 속의 요정',
+        imageUrl: 'https://picsum.photos/512/512?random=2',
+        style: '수채화',
+        colorTone: '파스텔',
+        createdAt: '2024-01-14T15:45:00Z'
+    },
+    {
+        id: '3',
+        prompt: '미래도시의 스카이라인',
+        imageUrl: 'https://picsum.photos/512/512?random=3',
+        style: '디지털아트',
+        colorTone: '어두운',
+        createdAt: '2024-01-13T09:20:00Z'
+    }
+];
+
+// 갤러리 저장 목업 함수
+export const mockSaveToGallery = async (
+    imageUrl: string,
+    prompt: string,
+    styleOptions: { artStyle: string; colorTone: string }
+): Promise<{ success: boolean; error?: string }> => {
+    // 실제 API 호출을 시뮬레이션하기 위한 지연
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // 95% 확률로 성공
+    if (Math.random() > 0.05) {
+        return { success: true };
+    } else {
+        return {
+            success: false,
+            error: '갤러리 저장에 실패했습니다. 다시 시도해 주세요.'
+        };
+    }
+};
+
+// 커뮤니티 공유 목업 함수
+export const mockShareToCommunity = async (
+    imageUrl: string,
+    prompt: string,
+    styleOptions: { artStyle: string; colorTone: string }
+): Promise<{ success: boolean; error?: string }> => {
+    // 실제 API 호출을 시뮬레이션하기 위한 지연
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // 95% 확률로 성공
+    if (Math.random() > 0.05) {
+        return { success: true };
+    } else {
+        return {
+            success: false,
+            error: '커뮤니티 공유에 실패했습니다. 다시 시도해 주세요.'
+        };
+    }
+};

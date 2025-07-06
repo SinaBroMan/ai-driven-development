@@ -149,6 +149,42 @@ export interface INavigationItem {
     href: string
 }
 
+export interface IPopularPrompt {
+    prompt: string
+    count: number
+    style: string
+    colorTone: string
+}
+
+export interface IGenerationHistoryItem {
+    id: string
+    prompt: string
+    imageUrl: string
+    style: string
+    colorTone: string
+    createdAt: string
+}
+
+// StyleOptions 관련 타입들
+export interface IArtStyleConfig {
+    icon: any
+    color: string
+    bgColor: string
+    description: string
+}
+
+export interface IColorToneConfig {
+    color: string
+    bgColor: string
+    description: string
+}
+
+export interface IPopularCombination {
+    artStyle: string
+    colorTone: string
+    label: string
+}
+
 export interface IGalleryQuery {
     page: number
     limit: number

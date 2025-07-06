@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { INavigationItem } from '@/types'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+import { User, LogIn } from 'lucide-react'
 
 const navigation: INavigationItem[] = [
     { name: '이미지 생성', href: '/generate' },
@@ -63,33 +63,12 @@ export function Header() {
                         ))}
                     </nav>
 
-                    {/* 인증 버튼 섹션 */}
+                    {/* 사용자 섹션 */}
                     <div className="flex items-center">
-                        <SignedIn>
-                            <UserButton
-                                appearance={{
-                                    elements: {
-                                        avatarBox:
-                                            'w-10 h-10 ring-2 ring-purple-600/30 rounded-lg',
-                                        userButtonPopulator: 'rounded-lg'
-                                    }
-                                }}
-                            />
-                        </SignedIn>
-                        <SignedOut>
-                            <SignInButton mode="modal">
-                                <button
-                                    className="inline-flex items-center justify-center rounded-lg text-sm font-medium 
-                                                 transition-all duration-300 
-                                                 focus-visible:outline-none focus-visible:ring-2 
-                                                 focus-visible:ring-purple-500 focus-visible:ring-offset-2 
-                                                 bg-purple-600 hover:bg-purple-700 text-white 
-                                                 h-10 px-6 py-2"
-                                >
-                                    로그인
-                                </button>
-                            </SignInButton>
-                        </SignedOut>
+                        <div className="flex items-center gap-2">
+                            <User className="w-5 h-5 text-purple-400" />
+                            <span className="text-sm text-gray-300">개발 모드</span>
+                        </div>
                     </div>
                 </div>
             </div>
